@@ -2,7 +2,7 @@
 
 import { Canvas } from "@react-three/fiber";
 import { SodaCan } from "./SodaCan";
-import { Environment, Float } from "@react-three/drei";
+import { Environment, Float, View } from "@react-three/drei";
 import FloatingCan from "@/components/FloatingCan";
 
 type Props = {};
@@ -26,9 +26,7 @@ export default function ViewCanvas({}: Props) {
         fov: 30,
       }}
     >
-      <FloatingCan />
-
-      <Environment files="/hdr/lobby.hdr" environmentIntensity={1.5} />
+        <View.Port />
     </Canvas>
   );
 }

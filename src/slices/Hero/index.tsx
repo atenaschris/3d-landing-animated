@@ -7,8 +7,9 @@ import Button from "@/components/Button";
 import { TextSplitter } from "@/components/TextSplitter";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-gsap.registerPlugin(useGSAP);
+gsap.registerPlugin(useGSAP,ScrollTrigger);
 
 /**
  * Props for `Hero`.
@@ -47,6 +48,38 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
         y: 10,
         duration: 0.6,
       });
+
+
+      const scrollTL = gsap.timeline({
+        scrollTrigger : {
+          trigger: ".hero",
+          start:"top top",
+          end:"bottom bottom",
+          scrub:1,
+          markers: true
+        }
+      });
+
+      scrollTL
+      .fromTo("body",{
+        backgroundColor:"#FDE047",
+      },{
+        backgroundColor:"#D9F99D",
+        overwrite:"auto"
+      }, 1)
+      .from(".text-side-heading .split-char", {
+        scale: 1.3,
+        y: 40,
+        rotate: -25,
+        opacity: 0,
+        stagger: 0.1,
+        ease:"back.out(3)",
+        duration: 0.5
+      })
+      .from(".text-side-body",{
+        y: 20,
+        opacity: 0
+      })
   });
 
   return (

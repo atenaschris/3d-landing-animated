@@ -10,6 +10,7 @@ import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { View } from "@react-three/drei";
 import Scene from "./Scene";
+import { Bubbles } from "./components/Bubbles";
 
 gsap.registerPlugin(useGSAP,ScrollTrigger);
 
@@ -91,11 +92,12 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
     >
       <View className="hero-scene pointer-events-none sticky top-0 z-50 -mt-[100vh] hidden h-screen w-screen md:block">
         <Scene />
+        <Bubbles count={300} speed={2} repeat={true}/>
       </View>
       <div className="grid">
         <div className="grid h-screen place-items-center">
           <div className="grid auto-rows-min place-items-center text-center">
-            <h1 className="hero-header leading[.8] text-7xl font-black uppercase text-orange-500 md:text-[9rem] lg:text-[13rem]">
+            <h1 className="hero-header leading[.8] text-7xl font-black uppercase text-orange-500 md:text-[9rem]">
               <TextSplitter
                 text={asText(slice.primary.heading)}
                 wordDisplayStyle="block"
